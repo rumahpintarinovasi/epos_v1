@@ -17,11 +17,11 @@ class CurrencyDatabaseSeeder extends Seeder
      */
     public function run() {
         Currency::create([
-            'currency_name'      => 'US Dollar',
-            'code'               => Str::upper('USD'),
-            'symbol'             => '$',
-            'thousand_separator' => ',',
-            'decimal_separator'  => '.',
+            'currency_name'      => 'Rupiah Indonesia',
+            'code'               => Str::upper('IDR'),
+            'symbol'             => 'Rp.',
+            'thousand_separator' => '.',
+            'decimal_separator'  => ',',
             'exchange_rate'      => null
         ]);
     }

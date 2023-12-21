@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+{{-- tambah comment --}}
     <div class="container-fluid">
         @can('show_total_stats')
         <div class="row">

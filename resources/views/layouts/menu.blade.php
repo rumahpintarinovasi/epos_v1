@@ -285,7 +285,7 @@
                 </a>
             </li>
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->routeIs('users*') ? 'c-active' : '' }}" href="{{ route('users.index') }}">
+                <a class="c-sidebar-nav-link {{ request()->routeIs('users') ? 'c-active' : '' }}" href="{{ route('users.index') }}">
                     <i class="c-sidebar-nav-icon bi bi-person-lines-fill" style="line-height: 1;"></i> All Users
                 </a>
             </li>

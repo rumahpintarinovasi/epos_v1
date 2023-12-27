@@ -251,8 +251,8 @@
             });
 
             $('#product-form').submit(function() {
-                var product_cost = $('#product_cost').maskMoney('unmasked')[0];
-                var product_price = $('#product_price').maskMoney('unmasked')[0];
+                var product_cost = $('#product_cost').val().replace(/[^\d]/g, '');
+                var product_price = $('#product_price').val().replace(/[^\d]/g, '');
                 $('#product_cost').val(product_cost);
                 $('#product_price').val(product_price);
             });

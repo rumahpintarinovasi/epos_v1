@@ -111,6 +111,7 @@
                 thousands:'{{ settings()->currency->thousand_separator }}',
                 decimal:'{{ settings()->currency->decimal_separator }}',
                 allowZero: true,
+                precision: 0,
             });
 
             $('#paid_amount').maskMoney('mask');

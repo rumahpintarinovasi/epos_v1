@@ -79,6 +79,7 @@
                 prefix:'{{ settings()->currency->symbol }}',
                 thousands:'{{ settings()->currency->thousand_separator }}',
                 decimal:'{{ settings()->currency->decimal_separator }}',
+                precision: 0,
             });
 
             $('#expense-form').submit(function () {

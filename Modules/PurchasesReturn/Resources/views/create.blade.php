@@ -126,6 +126,7 @@
                 thousands: '{{ settings()->currency->thousand_separator }}',
                 decimal: '{{ settings()->currency->decimal_separator }}',
                 allowZero: true,
+                precision: 0,
             });
 
             $('#getTotalAmount').click(function() {

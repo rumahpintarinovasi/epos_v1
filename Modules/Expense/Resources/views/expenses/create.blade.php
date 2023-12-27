@@ -83,7 +83,7 @@
             });
 
             $('#expense-form').submit(function () {
-                var amount = $('#amount').maskMoney('unmasked')[0];
+                var amount = $('#amount').val().replace(/[^\d]/g, '');
                 $('#amount').val(amount);
             });
         });

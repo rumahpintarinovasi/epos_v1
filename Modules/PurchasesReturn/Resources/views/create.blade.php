@@ -134,7 +134,7 @@
             });
 
             $('#purchase-return-form').submit(function() {
-                var paid_amount = $('#paid_amount').maskMoney('unmasked')[0];
+                var paid_amount = $('#paid_amount').val().replace(/[^\d]/g, '');
                 $('#paid_amount').val(paid_amount);
             });
         });

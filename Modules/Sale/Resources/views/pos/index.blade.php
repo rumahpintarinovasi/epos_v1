@@ -57,9 +57,9 @@
                 $('#total_amount').maskMoney('mask');
 
                 $('#checkout-form').submit(function () {
-                    var paid_amount = $('#paid_amount').maskMoney('unmasked')[0];
+                    var paid_amount = $('#paid_amount').val().replace(/[^\d]/g, '');
                     $('#paid_amount').val(paid_amount);
-                    var total_amount = $('#total_amount').maskMoney('unmasked')[0];
+                    var total_amount = $('#total_amount').val().replace(/[^\d]/g, '');
                     $('#total_amount').val(total_amount);
                 });
             });

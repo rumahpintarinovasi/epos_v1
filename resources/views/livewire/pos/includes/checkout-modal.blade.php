@@ -48,6 +48,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="due_amount">Due Amount <span class="text-danger">*</span></label>
+                                <input id="due_amount" type="text" class="form-control" value="0" readonly>
+                            </div>
+                            <div class="form-group">
                                 <label for="payment_method">Payment Method <span class="text-danger">*</span></label>
                                 <select class="form-control" name="payment_method" id="payment_method" required>
                                     @foreach (App\Interface\PaymentMethod::getAllPaymentMethod() as $item)

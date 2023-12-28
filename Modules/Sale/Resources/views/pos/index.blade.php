@@ -20,11 +20,11 @@
                 @include('utils.alerts')
             </div>
             <div class="col-lg-7">
-                <livewire:search-product/>
-                <livewire:pos.product-list :categories="$product_categories"/>
+                <livewire:search-product />
+                <livewire:pos.product-list :categories="$product_categories" />
             </div>
             <div class="col-lg-5">
-                <livewire:pos.checkout :cart-instance="'sale'" :customers="$customers"/>
+                <livewire:pos.checkout :cart-instance="'sale'" :customers="$customers" />
             </div>
         </div>
     </div>
@@ -33,30 +33,47 @@
 @push('page_scripts')
     <script src="{{ asset('js/jquery-mask-money.js') }}"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             window.addEventListener('showCheckoutModal', event => {
                 $('#checkoutModal').modal('show');
 
                 $('#paid_amount').maskMoney({
-                    prefix:'{{ settings()->currency->symbol }}',
-                    thousands:'{{ settings()->currency->thousand_separator }}',
-                    decimal:'{{ settings()->currency->decimal_separator }}',
+                    prefix: '{{ settings()->currency->symbol }}',
+                    thousands: '{{ settings()->currency->thousand_separator }}',
+                    decimal: '{{ settings()->currency->decimal_separator }}',
                     precision: 0,
                     allowZero: false,
                 });
 
                 $('#total_amount').maskMoney({
-                    prefix:'{{ settings()->currency->symbol }}',
-                    thousands:'{{ settings()->currency->thousand_separator }}',
-                    decimal:'{{ settings()->currency->decimal_separator }}',
+                    prefix: '{{ settings()->currency->symbol }}',
+                    thousands: '{{ settings()->currency->thousand_separator }}',
+                    decimal: '{{ settings()->currency->decimal_separator }}',
                     precision: 0,
                     allowZero: true,
                 });
 
+                $('#due_amount').maskMoney({
+                    prefix: '{{ settings()->currency->symbol }}',
+                    thousands: '{{ settings()->currency->thousand_separator }}',
+                    decimal: '{{ settings()->currency->decimal_separator }}',
+                    precision: 0,
+                    allowZero: true,
+                });
+
+                $("#paid_amount").on('keyup', function() {
+                    var total_amount = $('#total_amount').val().replace(/[^\d]/g, '');
+                    var paid_amount = $(this).val().replace(/[^\d]/g, '');
+                    var due_amount = paid_amount - total_amount;
+                    $('#due_amount').val(due_amount);
+                    $('#due_amount').maskMoney('mask');
+                });
+
                 $('#paid_amount').maskMoney('mask');
                 $('#total_amount').maskMoney('mask');
+                $('#due_amount').maskMoney('mask');
 
-                $('#checkout-form').submit(function () {
+                $('#checkout-form').submit(function() {
                     var paid_amount = $('#paid_amount').val().replace(/[^\d]/g, '');
                     $('#paid_amount').val(paid_amount);
                     var total_amount = $('#total_amount').val().replace(/[^\d]/g, '');
@@ -65,5 +82,4 @@
             });
         });
     </script>
-
 @endpush

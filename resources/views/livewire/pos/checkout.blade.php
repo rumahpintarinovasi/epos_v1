@@ -22,7 +22,6 @@
                             </a>
                         </div>
                         <select wire:model.live="customer_id" id="customer_id" class="form-control">
-                            <option value="" selected>Select Customer</option>
                             @foreach($customers as $customer)
                                 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
                             @endforeach

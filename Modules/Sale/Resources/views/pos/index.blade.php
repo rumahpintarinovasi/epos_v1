@@ -41,7 +41,6 @@
                     prefix: '{{ settings()->currency->symbol }}',
                     thousands: '{{ settings()->currency->thousand_separator }}',
                     decimal: '{{ settings()->currency->decimal_separator }}',
-                    precision: 0,
                     allowZero: false,
                 });
 
@@ -49,7 +48,6 @@
                     prefix: '{{ settings()->currency->symbol }}',
                     thousands: '{{ settings()->currency->thousand_separator }}',
                     decimal: '{{ settings()->currency->decimal_separator }}',
-                    precision: 0,
                     allowZero: true,
                 });
 
@@ -57,7 +55,6 @@
                     prefix: '{{ settings()->currency->symbol }}',
                     thousands: '{{ settings()->currency->thousand_separator }}',
                     decimal: '{{ settings()->currency->decimal_separator }}',
-                    precision: 0,
                     allowZero: true,
                 });
 

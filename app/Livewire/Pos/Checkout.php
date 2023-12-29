@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pos;
 
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Modules\Product\Entities\Category;
@@ -74,8 +75,9 @@ class Checkout extends Component
         });
 
         if ($exists->isNotEmpty()) {
-            session()->flash('message', 'Product exists in the cart!');
-
+            // session()->flash('message', 'Product exists in the cart!');
+            $this->quantity[$product['id']] = $this->quantity[$product['id']] + 1;
+            $this->updateQuantity($exists->first()->rowId, $product['id']);
             return;
         }
 

@@ -42,6 +42,7 @@
                     thousands: '{{ settings()->currency->thousand_separator }}',
                     decimal: '{{ settings()->currency->decimal_separator }}',
                     allowZero: true,
+                    precision: 0
                 });
 
                 $('#total_amount').maskMoney({
@@ -49,6 +50,7 @@
                     thousands: '{{ settings()->currency->thousand_separator }}',
                     decimal: '{{ settings()->currency->decimal_separator }}',
                     allowZero: true,
+                    precision: 0
                 });
 
                 $('#due_amount').maskMoney({
@@ -56,11 +58,12 @@
                     thousands: '{{ settings()->currency->thousand_separator }}',
                     decimal: '{{ settings()->currency->decimal_separator }}',
                     allowZero: true,
+                    precision: 0
                 });
 
                 $("#paid_amount").on('keyup', function() {
-                    var total_amount = $('#total_amount').val().replace(/[^\d]/g, '');
-                    var paid_amount = $(this).val().replace(/[^\d]/g, '');
+                    var total_amount = parseInt($('#total_amount').attr('value'));
+                    var paid_amount = parseInt($('#paid_amount').val().replace(/[^\d]/g, ''));
                     var due_amount = paid_amount - total_amount;
                     $('#due_amount').val(due_amount);
                     $('#due_amount').maskMoney('mask');

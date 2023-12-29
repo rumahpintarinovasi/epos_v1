@@ -1,5 +1,8 @@
 <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel"
     aria-hidden="true">
+    @php
+        $total_with_shipping = Cart::instance($cart_instance)->total() + (float) $shipping;
+    @endphp
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -18,7 +21,7 @@
                             <div class="alert-body">
                                 <span>{{ session('checkout_message') }}</span>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                         </div>
@@ -35,7 +38,8 @@
                                         <label for="total_amount">Total Amount <span
                                                 class="text-danger">*</span></label>
                                         <input id="total_amount" type="text" class="form-control" name="total_amount"
-                                            value="{{ $total_amount }}" readonly required>
+                                            value="{{ $total_with_shipping }}"
+                                            readonly required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -43,7 +47,8 @@
                                         <label for="paid_amount">Received Amount <span
                                                 class="text-danger">*</span></label>
                                         <input id="paid_amount" type="text" class="form-control" name="paid_amount"
-                                            value="{{ $total_amount }}" required>
+                                            value="{{ $total_with_shipping }}"
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -90,9 +95,6 @@
                                     </tr>
                                     <tr class="text-primary">
                                         <th>Grand Total</th>
-                                        @php
-                                            $total_with_shipping = Cart::instance($cart_instance)->total() + (float) $shipping;
-                                        @endphp
                                         <th>
                                             (=) {{ format_currency($total_with_shipping) }}
                                         </th>

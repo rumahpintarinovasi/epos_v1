@@ -53,6 +53,7 @@ class Checkout extends Component
 
     public function proceed() {
         if ($this->customer_id != null) {
+            $this->total_amount = $this->calculateTotal();
             $this->dispatch('showCheckoutModal');
         } else {
             session()->flash('message', 'Please Select Customer!');

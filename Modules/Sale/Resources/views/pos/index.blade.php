@@ -68,11 +68,13 @@
                     $('#due_amount').val(due_amount);
                     $('#due_amount').maskMoney('mask');
                 });
-
-                $('#paid_amount').maskMoney('mask');
-                $('#total_amount').maskMoney('mask');
+                $('#paid_amount').maskMoney('mask', parseFloat(document.querySelector(
+                    "#checkout-form > div.modal-body > div > div.col-lg-5 > div > table > tbody > tr.text-primary > th:nth-child(2)"
+                    ).innerHTML.replace(/[^\d]/g, '').replace('00','')));
+                $('#total_amount').maskMoney('mask', parseFloat(document.querySelector(
+                    "#checkout-form > div.modal-body > div > div.col-lg-5 > div > table > tbody > tr.text-primary > th:nth-child(2)"
+                    ).innerHTML.replace(/[^\d]/g, '').replace('00','')));
                 $('#due_amount').maskMoney('mask');
-
                 $('#checkout-form').submit(function() {
                     var paid_amount = $('#paid_amount').val().replace(/[^\d]/g, '');
                     $('#paid_amount').val(paid_amount);

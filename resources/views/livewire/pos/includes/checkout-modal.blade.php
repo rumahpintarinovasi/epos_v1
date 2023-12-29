@@ -3,6 +3,7 @@
     @php
         $total_with_shipping = Cart::instance($cart_instance)->total() + (float) $shipping;
     @endphp
+    <p class="d-none" id="total_with_shipping_none">{{ $total_with_shipping }}</p>
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -38,8 +39,7 @@
                                         <label for="total_amount">Total Amount <span
                                                 class="text-danger">*</span></label>
                                         <input id="total_amount" type="text" class="form-control" name="total_amount"
-                                            value="{{ $total_with_shipping }}"
-                                            readonly required>
+                                            value="{{ $total_with_shipping }}" readonly required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -47,8 +47,7 @@
                                         <label for="paid_amount">Received Amount <span
                                                 class="text-danger">*</span></label>
                                         <input id="paid_amount" type="text" class="form-control" name="paid_amount"
-                                            value="{{ $total_with_shipping }}"
-                                            required>
+                                            value="{{ $total_with_shipping }}" required>
                                     </div>
                                 </div>
                             </div>

@@ -1,9 +1,8 @@
 <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel"
     aria-hidden="true">
     @php
-        $total_with_shipping = Cart::instance($cart_instance)->total() + (float) $shipping;
+        $total_with_shipping = round(Cart::instance($cart_instance)->total() + (float) $shipping, 0);
     @endphp
-    <p class="d-none" id="total_with_shipping_none">{{ $total_with_shipping }}</p>
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">

@@ -41,7 +41,7 @@
                     prefix: '{{ settings()->currency->symbol }}',
                     thousands: '{{ settings()->currency->thousand_separator }}',
                     decimal: '{{ settings()->currency->decimal_separator }}',
-                    allowZero: false,
+                    allowZero: true,
                 });
 
                 $('#total_amount').maskMoney({
@@ -65,12 +65,8 @@
                     $('#due_amount').val(due_amount);
                     $('#due_amount').maskMoney('mask');
                 });
-                $('#paid_amount').maskMoney('mask', parseFloat(document.querySelector(
-                    "#total_with_shipping_none"
-                ).innerHTML));
-                $('#total_amount').maskMoney('mask', parseFloat(document.querySelector(
-                    "#total_with_shipping_none"
-                ).innerHTML));
+                $('#paid_amount').maskMoney('mask', parseFloat($('#paid_amount').attr('value')));
+                $('#total_amount').maskMoney('mask', parseFloat($('#total_amount').attr('value')));
                 $('#due_amount').maskMoney('mask');
                 $('#checkout-form').submit(function() {
                     var paid_amount = $('#paid_amount').val().replace(/[^\d]/g, '');

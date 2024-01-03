@@ -37,4 +37,9 @@
 
 @push('page_scripts')
     {!! $dataTable->scripts() !!}
+    <script>
+        @if (session()->has('print_invoice') && session()->pull('print_invoice') == "on")
+            window.open('{{ route('sales.pos.pdf', session()->pull('id_print_invoice')) }}', '_blank')
+        @endif
+    </script>
 @endpush

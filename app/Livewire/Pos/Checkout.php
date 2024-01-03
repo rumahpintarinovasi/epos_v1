@@ -5,7 +5,7 @@ namespace App\Livewire\Pos;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
-use Modules\Product\Entities\Category;
+use Modules\People\Entities\Customer;
 
 class Checkout extends Component
 {
@@ -26,7 +26,7 @@ class Checkout extends Component
     public $total_amount;
 
     public function mount($cartInstance, $customers) {
-        $this->customer_id = Category::first()->id;
+        $this->customer_id = Customer::first()->id;
         $this->cart_instance = $cartInstance;
         $this->customers = $customers;
         $this->global_discount = 0;

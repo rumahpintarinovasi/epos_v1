@@ -62,6 +62,10 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="print_invoice" name="print_invoice" checked>
+                                <label class="form-check-label" for="print_invoice">Print Invoice</label>
+                            </div>
                             <div class="form-group">
                                 <label for="note">Note (If Needed)</label>
                                 <textarea name="note" id="note" rows="5" class="form-control"></textarea>

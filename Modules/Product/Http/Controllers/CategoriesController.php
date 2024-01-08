@@ -24,7 +24,7 @@ class CategoriesController extends Controller
 
         $request->validate([
             'category_code' => 'required|unique:categories,category_code',
-            'category_name' => 'required'
+            'category_name' => 'required|unique:categories,category_name'
         ]);
 
         Category::create([

@@ -1,5 +1,5 @@
-# pos-apindo
- Program Kasir APINDO UMKM
+# e-pos
+ Program Kasir Simple
 
 # Local Installation
 
